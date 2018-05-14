@@ -37,7 +37,7 @@ seo=80.00%
 2018-05-14T16:43:07.959Z.json latest.json
 ```
 
-## Extending this image
+## Extending this image
 
 ```dockerfile
 FROM averagemarcus/lighthouse
