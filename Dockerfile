@@ -7,9 +7,12 @@ RUN apk update && apk upgrade && \
       nss@edge
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
+COPY ./docker-entrypoint.sh /usr/local/bin
+RUN ln -s /usr/local/bin/docker-entrypoint.sh /
+
 RUN mkdir /lighthouse-results
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 
-ENTRYPOINT ["node", "/usr/src/app/index.js"]
+ENTRYPOINT ["docker-entrypoint.sh"]

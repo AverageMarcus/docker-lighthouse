@@ -36,3 +36,11 @@ seo=80.00%
 ❯ ls results
 2018-05-14T16:43:07.959Z.json latest.json
 ```
+
+## Extending this image
+
+```dockerfile
+FROM averagemarcus/lighthouse
+
+ENTRYPOINT /docker-entrypoint.sh && ls /lighthouse-results
+```
