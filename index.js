@@ -29,7 +29,12 @@ if (!process.env.URL) {
   await writeFileAsync(`/lighthouse-results/${new Date().toISOString()}.json`, fileData, 'utf8');
 
   console.log(`Lighthouse results for ${process.env.URL}\n`);
-  console.log(`${results.reportCategories.map(c => `${c.id}=${c.score.toFixed(2)}%`).join('\n')}`);
+  const { categories } = results.lhr;
+  for (const key in categories) {
+    const title = categories[key].title;
+    const score = categories[key].score * 100;
+    console.log(`${title}=${score}%`);
+  }
 
   process.exit(0);
 })();

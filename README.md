@@ -12,11 +12,11 @@ Running Lighthouse against https://bbc.co.uk
 
 Lighthouse results for https://bbc.co.uk
 
-performance=57.88%
-pwa=45.45%
-accessibility=93.26%
-best-practices=75.00%
-seo=80.00%
+Performance=57.88%
+Progressive Web App=45.45%
+Accessibility=93.26%
+Best Practices=75.00%
+SEO=80.00%
 ```
 
 **JSON Results**
@@ -27,11 +27,11 @@ Running Lighthouse against https://bbc.co.uk
 
 Lighthouse results for https://bbc.co.uk
 
-performance=57.88%
-pwa=45.45%
-accessibility=93.26%
-best-practices=75.00%
-seo=80.00%
+Performance=57.88%
+Progressive Web App=45.45%
+Accessibility=93.26%
+Best Practices=75.00%
+SEO=80.00%
 
 ❯ ls results
 2018-05-14T16:43:07.959Z.json latest.json

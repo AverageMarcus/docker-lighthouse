@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lighthouse": "^2.9.4",
+    "lighthouse": ">=3.0.0-alpha <4",
     "puppeteer": "^1.4.0"
   }
 }
