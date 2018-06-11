@@ -44,3 +44,11 @@ FROM averagemarcus/lighthouse
 
 ENTRYPOINT /docker-entrypoint.sh && ls /lighthouse-results
 ```
+
+## Generating lighthouse badges
+
+To have [lighthouse badges](https://github.com/ebidel/lighthouse-badge) automatically created, pass in `-e withBadges=true` and a mount volume when running. E.g.
+
+```
+❯ docker run -e URL=https://bbc.co.uk -e withBadges=true -v $(pwd)/results:/lighthouse-results averagemarcus/lighthouse
+```

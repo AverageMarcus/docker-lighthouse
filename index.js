@@ -32,21 +32,23 @@ if (!process.env.URL) {
   console.log(`Lighthouse results for ${process.env.URL}\n`);
   console.log(`${results.reportCategories.map(c => `${c.id}=${c.score.toFixed(2)}%`).join('\n')}`);
 
-  const download = function(uri, filename, callback){
-    request.head(uri, function(err, res, body){
-      request(uri).pipe(createWriteStream(filename)).on('close', callback);
-    });
-  };
-  await Promise.all(results.reportCategories.reduce((promises, c) => {
-    promises.push(new Promise(resolve => {
-      download(`https://lighthouse-badge.appspot.com/?score=${c.score}&category=${c.id}`, `/lighthouse-results/${new Date().toISOString()}-${c.id}.svg`, resolve)
-    }));
-    promises.push(new Promise(resolve => {
-      download(`https://lighthouse-badge.appspot.com/?score=${c.score}&compact&category=${c.id}`, `/lighthouse-results/${new Date().toISOString()}-${c.id}-compact.svg`, resolve)
-    }));
+  if (process.env.withBadges) {
+    const download = function(uri, filename, callback){
+      request.head(uri, function(err, res, body){
+        request(uri).pipe(createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await Promise.all(results.reportCategories.reduce((promises, c) => {
+      promises.push(new Promise(resolve => {
+        download(`https://lighthouse-badge.appspot.com/?score=${c.score}&category=${c.id}`, `/lighthouse-results/${new Date().toISOString()}-${c.id}.svg`, resolve)
+      }));
+      promises.push(new Promise(resolve => {
+        download(`https://lighthouse-badge.appspot.com/?score=${c.score}&compact&category=${c.id}`, `/lighthouse-results/${new Date().toISOString()}-${c.id}-compact.svg`, resolve)
+      }));
 
-    return promises;
-  }, []));
+      return promises;
+    }, []));
+  }
 
   process.exit(0);
 })();
